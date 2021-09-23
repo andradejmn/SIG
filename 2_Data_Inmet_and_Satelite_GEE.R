@@ -12,7 +12,7 @@ library (hydroGOF) #Estatisticas de desempenho
 library(lubridate) #Manipulação de dados mensais, diários, anuais 
 
 #-------------------------------------------------------
-#Parte 1- Listar todos os arquivos 
+#Parte 1- Listar todos os arquivos com os dados das estações
 
 #files_Inmet = list.files("C:\\Users\\jonet\\Documents\\Doutorado-UFPE\\Periodo 2021_2\\SIG\\01_Dados de Campo\\01_Est_Convencional_2000_2020\\"
 #                         , pattern='*.csv',full.names=TRUE)
@@ -115,10 +115,11 @@ data_precipitation<-data_precipitation_temp1 %>%
 #Dados de satélite 
 
 #Convertendo a coluna de data em data 
-data_satelite_est$date<-as.Date(data_satelite_est$date)
+#data_satelite_est$date<-as.Date(data_satelite_est$date)
 data_satelite_est<-dados_est %>%
   filter(Nome==Nome[1]) %>% 
   filter(date<=as.Date(Date_end) & date>=as.Date(Date_star))
+data_satelite_est$date<-as.Date(data_satelite_est$date)
 #filter(data,)
 
 #--------------------------------------------------------------------------------------
@@ -174,7 +175,7 @@ Dados_month_obs<-Dados_Obs_Sat_month_temp1 %>%
   
 
 #Alterar ordem das colunas 
-#Sem valores preenchigos 
+#Sem valores preenchidos, apenas somandos os valores em "Nas"
 # Dados_year_obs <- Dados_Obs_Sat_month_temp1 %>%
 #   group_by(year,month) %>%
 #   summarise(mes_Obs = sum(Obs,na.rm = TRUE))
@@ -278,4 +279,3 @@ Dados_estatisticas=bind_rows(Dados_estatisticas,Dados_temp)
 write_delim(Dados_estatisticas,file="03_Resultados/Dados_Estatisticas_CHIRPs_2_gapfill_NAs.csv",delim =",")
 #write_delim(Dados_estatisticas,file="03_Resultados/Dados_Estatisticas_CHIRPs.xlsx",delim =",")
 
-#git reset --hard origin/master
