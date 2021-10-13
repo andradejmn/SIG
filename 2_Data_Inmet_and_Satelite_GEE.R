@@ -133,8 +133,8 @@ sim_dia=data_satelite_est$precipitation
 obs_dia=data_precipitation$`PRECIPITACAO TOTAL, DIARIO(mm)`
 est_dia <- gof(sim_dia, obs_dia)
 fic.out<-paste0("03_Resultados/Imagens/CHIRSPS/",i,"_",Nome,"_dia.png")
-png(file=fic.out,
-    width=800, height=500)
+#png(file=fic.out,
+#    width=800, height=500)
 
 #Possibiliade de indicadores 
 #ME", "MAE", "RMSE", "NRMSE", "PBIAS", "RSR", "rSD", "NSE", "mNSE", 
@@ -197,8 +197,8 @@ sim_mes=Dados_month_sat$mes_Sim
 obs_mes=Dados_month_obs$mes_Obs
 est_Mes <- gof(sim_mes, obs_mes)
 fic.out<-paste0("03_Resultados/Imagens/CHIRSPS/",i,"_",Nome,"_mes.png")
-png(file=fic.out,
-    width=800, height=500)
+#png(file=fic.out,
+#    width=800, height=500)
 ggof(sim_mes, obs_mes,gofs=Estatisticas,ylab=c("Rainfall[mm]"),dates=Dados_month_sat$Data_mes_ano)
 dev.off() #Para salvar os gráficos plotar os gráficos
 
@@ -234,8 +234,8 @@ sim_year=Dados_year_sat$year_Sim
 est_year <- gof(sim_year, obs_year)
 
 fic.out<-paste0("03_Resultados/Imagens/CHIRSPS/",i,"_",Nome,"_year.png")
-png(file=fic.out,
-    width=800, height=500)
+#png(file=fic.out,
+#    width=800, height=500)
 ggof(sim_year, obs_year,gofs=Estatisticas,ylab=c("Rainfall[mm]"),dates=Dados_year_sat$Data_mes_ano)
 
 
